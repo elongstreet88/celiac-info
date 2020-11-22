@@ -2,13 +2,13 @@
 
 ```mermaid
 graph LR
-    subgraph Food-Label
+    subgraph Food-Label-Says
        gf
        cgf
        mbp
        mcw
     end
-    subgraph Ingredients
+    subgraph Ingredients-Contain
        cmrbow
     end
     subgraph Results
@@ -21,9 +21,10 @@ graph LR
     gf{Gluten Free} --> |Yes|mbp
     mbp[May be processed<br>in a facility<br>that contains gluten] --> |Yes|ps[Probably Safe]
     mbp --> |No|ls
-    gf{Gluten Free} --> |No|mcw
+    gf{Gluten Free} --> |No|mcw{May Contain Wheat}
     mcw --> |No|cmrbow[Contains:<br>Malt<br>Rye<br>Barley<br>Wheat]
     mcw --> |Yes|ns
-    cmrbow --> |Yes|ns[Not Safe]
     
+    cmrbow --> |No|ps
+    cmrbow --> |Yes|ns[Not Safe]
 ```
